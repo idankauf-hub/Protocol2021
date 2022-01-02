@@ -12,10 +12,10 @@ namespace Protocol2021
         private byte som;
         private byte len;
         private byte seq;
+        private byte messageType;
         private byte[] payload;
         private byte checksum;
         private byte eom;
-
         private const byte SOM = 0xAA;
         private const byte EOM = 0xAB;
         private byte sum;
@@ -23,11 +23,12 @@ namespace Protocol2021
         {
                 
         }
-        public Packet(byte som, byte len, byte seq, byte[] payload, byte checksum, byte eom)
+        public Packet(byte som, byte len, byte seq, byte messageType, byte[] payload, byte checksum, byte eom)
         {
             this.som = som;
             this.len = len;
             this.seq = seq;
+            this.messageType = messageType;
             this.payload = payload;
             this.checksum = checksum;
             this.eom = eom;
@@ -36,28 +37,14 @@ namespace Protocol2021
         public byte Som { get => som; set => som = value; }
         public byte Len { get => len; set => len = value; }
         public byte Seq { get => seq; set => seq = value; }
+        public byte MessageType { get => messageType; set => messageType = value; }
+
         public byte[] Payload { get => payload; set => payload = value; }
         public byte Checksum { get => checksum; set => checksum = value; }
         public byte Eom { get => eom; set => eom = value; }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Packet packet &&
-                   som == packet.som &&
-                   len == packet.len &&
-                   seq == packet.seq &&
-                   EqualityComparer<byte[]>.Default.Equals(payload, packet.payload) &&
-                   checksum == packet.checksum &&
-                   eom == packet.eom;
-        }
 
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public bool isValid(Packet packet, int length)
+        public bool isValid(Packet packet)
         {
             //checking for:
             //Length of the message
@@ -67,9 +54,9 @@ namespace Protocol2021
             {
                 sum += packet.Payload[i];
             }
-            if (length - 2 != packet.Len || //Length of the message exclude <SOM> and <Len> 
+            if ( 
                 packet.Som != SOM || packet.Eom != EOM ||//SOM and EOM  
-                packet.Checksum != sum + packet.Len + packet.Seq)//check checksum
+                packet.Checksum != sum +packet.MessageType+ packet.Len + packet.Seq)//check checksum
 
             { //checksum valid
 
@@ -80,9 +67,9 @@ namespace Protocol2021
 
         }
 
-        public string parseMsgFromBytes(Packet packet, int length)
+        public string parseMsgFromBytes(Packet packet)
         {
-            if (isValid(packet, length))
+            if (isValid(packet))
             {
                 return appSendMsg(packet);
             }
