@@ -20,5 +20,5 @@
     The value
     
    # SOM and EOM
-   som- 0xAA
-   eom-0xAB
+   const som- 0xAA
+   const eom-0xAB
