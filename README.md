@@ -1,6 +1,5 @@
 # Protocol2021
-Building my own protocol
-
+  A program for recieve my own customized communication protocol that validates the packet and returns the data.
   # Examples for messages:
           < SOM >< Len >< Seq >< Payload >< cs / CRC16 >< EOM >
           0xAA, 0x06, 0x01, 0x01, 10x01, 0xA0, 0xA9, 0xAB      -->       “Wind speed    : 160 Km / h”
