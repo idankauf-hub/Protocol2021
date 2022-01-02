@@ -1,7 +1,7 @@
 # Protocol2021
   A program for recieve my own customized communication protocol that validates the packet and returns the data.
   # Examples for messages:
-          < SOM >< Len >< Seq >< Payload >< cs / CRC16 >< EOM >
+          < SOM >< Len >< Seq ><MessageType>< Payload >< cs / CRC16 >< EOM >
           0xAA, 0x06, 0x01, 0x01, 0x01, 0xA0, 0xA9, 0xAB      -->       “Wind speed    : 160 Km / h”
           0xAA, 0x07, 0x01, 0x02, 0x02, 0x27, 0x00, 0x33, 0xAB  -->   “Wind Direction: 39 degrees”
           0xAA, 0x06, 0x01, 0x03, 0x01, 0x0C, 0x17, 0xAB         -->    “Height             :  12 meters”
@@ -20,5 +20,8 @@
     The value
     
    # SOM and EOM
-   const som- 0xAA
-   const eom-0xAB
+   **const som**- 0xAA
+   **const eom**-0xAB
+  # Message Type
+  1 - Noraml
+  2- Ack - the packet is an acknowledgment answer.
