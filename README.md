@@ -18,3 +18,7 @@
   **third and forth(only case thats the wind direction is more than 255):**
   
     The value
+    
+   # SOM and EOM
+   som- 0xAA
+   eom-0xAB
