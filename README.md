@@ -20,7 +20,7 @@
     The value
     
    # SOM and EOM
-   **const som**- 0xAA
+   **const som**- 0xAA <br />
    **const eom**-0xAB
   # Message Type
   1 - Noraml
