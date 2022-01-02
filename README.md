@@ -18,7 +18,7 @@
   
     length of the data
 
-  **third and forth(only case thats the wind direction is more than 255):**
+  **third and forth(only case thats the wind direction is more than 255 degree):**
   
     The value
     
