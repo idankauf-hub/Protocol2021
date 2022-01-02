@@ -71,6 +71,10 @@ namespace Protocol2021
         {
             if (isValid(packet))
             {
+                if (packet.MessageType== 1)
+                {
+                    return "Ack recieve";
+                }
                 return appSendMsg(packet);
             }
             return "Isn`t Valid packet";
