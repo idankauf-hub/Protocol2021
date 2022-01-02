@@ -8,5 +8,5 @@ Building my own protocol
           0xAA, 0x06, 0x01, 0x03, 0x01, 0x0C, 0x17, 0xAB         -->    “Height             :  12 meters”
   # Attributes:
             1 - Wind speed - (range: 0 - 255 km / h)
-            2 - Wind Direction(range: 0 - 360) 2 bytes
+            2 - Wind Direction(range: 0 - 360)
             3 - Height(range: 10 - 15 meters)
