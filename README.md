@@ -5,6 +5,9 @@
           0xAA, 0x06, 0x01, 0x01, 0x01, 0xA0, 0xA9, 0xAB      -->       “Wind speed    : 160 Km / h”
           0xAA, 0x07, 0x01, 0x02, 0x02, 0x27, 0x00, 0x33, 0xAB  -->   “Wind Direction: 39 degrees”
           0xAA, 0x06, 0x01, 0x03, 0x01, 0x0C, 0x17, 0xAB         -->    “Height             :  12 meters”
+   # Example of message sending ack answer:
+     0xAA, 0x07, 0x01,0x01, 0x03, 0x01, 0x0C, 0x19, 0xAB 
+   
   # Payload attributes(3 or 4 bytes length):
    **first byte:**
    
@@ -23,5 +26,5 @@
    **const som**- 0xAA <br />
    **const eom**-0xAB
   # Message Type
-  1 - Noraml
-  2- Ack - the packet is an acknowledgment answer.
+  1 - Noraml <br />
+  2- Ack - the packet is an acknowledgment answer for recive the message.
