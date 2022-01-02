@@ -80,7 +80,7 @@ namespace Protocol2021
 
         }
 
-        public string parseMsg(Packet packet, int length)
+        public string parseMsgFromBytes(Packet packet, int length)
         {
             if (isValid(packet, length))
             {
